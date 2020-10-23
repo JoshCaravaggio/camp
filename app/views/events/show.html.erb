@@ -71,12 +71,8 @@
   <div class = "col-md-8 col-sm-12 session-location"><%= @event.capacity %>.</div> 
 </div>   
 <br>
- <%= link_to 'Edit', edit_events_path(@event) %> |
-<%
-=begin%>
-<%= link_to 'Back', events_path %> 
-<%
-=end%>
+ <%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to "Back", :back %>
       </div>
     </div>
   </div>

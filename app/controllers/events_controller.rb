@@ -20,6 +20,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    puts "EVENT: #{params[:id]}"
     @event = Event.find_by(params[:id])
   end
 
@@ -77,7 +78,7 @@ class EventsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
-      @event = Event.find(params[:format])
+      @event = Event.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

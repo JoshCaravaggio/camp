@@ -55,48 +55,45 @@
       <div class="col-lg-4 col-md-8 col-sm-12 ">
         <div class="event-container bg-faded rounded p-5" >
             <h1>Editing Event</h1>
-            <%= form_with(model: @event) do |form| %>
-            <% if event.errors.any? %>
-            <div id="error_explanation">
-                <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+            <%= form_with(model: @event, url: "#update" ) do |form| %>
+                <% if event.errors.any? %>
+                <div id="error_explanation">
+                    <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+                    <ul>
+                        <% event.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                        <% end %>
+                    </ul>
+                </div>
+                <% end %>
+                <br />
+                <%= label_tag(:title) %>
+                <%= text_field(:event,  :title) %>
 
-                <ul>
-                    <% event.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                    <% end %>
-                </ul>
-            </div>
-            <% end %>
-            <br />
-              <%= label_tag(:title) %>
-              <%= text_field(:event,  :title, @event.title) %>
+                <%= label_tag(:location) %>
+                <%= text_field(:event, :location) %>
 
-              <%= label_tag(:location) %>
-              <%= text_field(:event, :location) %>
-
-              <%= label_tag(:start) %>
-              <%= text_field(:event,  :start, @event.start) %>
+                <%= label_tag(:start) %>
+                <%= text_field(:event,  :start) %>
+            
+                <%= label_tag(:end) %>
+                <%= text_field(:event, :end) %>
         
-              <%= label_tag(:end) %>
-              <%= text_field(:event, :end, @event.end) %>
-      
-              <%= label_tag(:info)%> 
-              <%= text_field(:event,  :info, @event.info) %>
+                <%= label_tag(:info)%> 
+                <%= text_field(:event,  :info) %>
 
-              <%= label_tag(:capacity) %>
-              <%= number_field(:event,  :capacity, in: 1..100) %>
-            <div class="actions">
-                <br/>
-                <%= form.submit %>
-            </div>
+                <%= label_tag(:capacity) %>
+                <%= number_field(:event,  :capacity, in: 1..100) %>
+
+                <div class="actions">
+                    <br/>
+                <%= form.submit 'Update Event' %>
+                </div>
             </div>
           <% end %>
       </div>
     </div>
   </div>
 </section>
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
-
 </body>
 

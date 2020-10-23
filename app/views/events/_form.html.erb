@@ -1,0 +1,96 @@
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+    <title>JAQ Hockey - Drop-in Sessions</title>
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+  <link href="css/business-casual.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+  <style>
+
+      .event-container {
+          vertical-align:middle;
+      }
+      .session-rsvp {
+          display: inline-block;
+          border-radius: 2px;
+          padding: 5px;
+          color: #FFFFFF;
+          background-color: #fed794;
+      }
+      input{
+        width:100%; 
+      }
+      label{
+        text-align:left;
+      }
+      body{
+        height:100%
+      }
+  </style>
+</head>
+<body >
+<br/>
+<br/>
+<br/>
+<section >
+  <div class = "container">
+    <div class = "row">
+     <div class="col-lg-4 col-md-2 col-sm-0">
+     </div>
+      <div class="col-lg-4 col-md-8 col-sm-12 ">
+        <div class="event-container bg-faded rounded p-5" >
+            <h1>New Event</h1>
+            <%= form_with(model: @event) do |form| %>
+            <% if event.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+                <ul>
+                    <% event.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                    <% end %>
+                </ul>
+            </div>
+            <% end %>
+            <br />
+              <%= label_tag(:title) %>
+              <%= text_field(:event,  :title) %>
+
+              <%= label_tag(:location) %>
+              <%= text_field(:event, :location) %>
+
+              <%= label_tag(:start) %>
+              <%= text_field(:event,  :start) %>
+        
+              <%= label_tag(:end) %>
+              <%= text_field(:event, :end) %>
+      
+              <%= label_tag(:info)%> 
+              <%= text_field(:event,  :info) %>
+
+              <%= label_tag(:capacity) %>
+              <%= number_field(:event,  :capacity, in: 1..100) %>
+            <div class="actions">
+              <br/>
+                <%= form.submit %>
+            </div>
+        </div>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
